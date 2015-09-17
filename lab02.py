@@ -19,6 +19,8 @@ def fib(n):
 		listholder.append(1)
 		for i in range(n-2):
 			a,b = b,a+b
+			#a = b
+			#b = a+b
 			listholder.append(a)
 		
 	for i in range(0, len(listholder), 6):
