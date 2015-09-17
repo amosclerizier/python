@@ -1,0 +1,72 @@
+# COT 4930  Python Programming
+# name: 
+# id  : 
+# lab : 04
+
+
+def make_dict():
+	
+	f = open('fl_cities.txt','r')
+	global d
+	d = {}
+
+	for line in f:
+		x = line.split(":")
+		a = x[0]
+		b = x[1]
+		c = len(b)-1
+		b = b[0:c]
+
+		d[a] = b
+	f.close()
+
+def test_dict():
+	f = open('fl_maint.txt','r')
+	e = {}
+
+	for line in f:
+		x = line.split("-")
+		a = x[0]
+		b = x[1]
+		c = len(b)-1
+		b = b[0:c]
+
+		e[a] = b
+		if a == 'p':
+			print('p')
+			for word in sorted(d, key=d.get, reverse=False):
+  				#print(word, d[word])
+  				print('{0:15}  {1:15}'.format(d[word], word))
+		elif a == 'f':
+			print('f')
+			for k, v in d.items():
+				if b in v:
+					#print(k)
+					print('{0:15}  {1:15}'.format(v, k))
+  		
+		elif a =='c':
+			print('c')
+			s = b.split(":")
+			u = s[0]
+			q = s[1]
+			nfound = True
+
+			for k, v in d.items():
+				if q == v:
+					d[u] = d.pop(k)
+					print('{0:15}  {1:15}'.format(d[u], u))
+					nfound = False
+
+			if nfound == True:
+				print('{0:15}  {1:15}'.format(q, 'city unknown'))
+				#print('city unknown')
+
+		else:
+			print(a)
+			print('unknown cmd')
+
+
+	f.close()
+
+make_dict()
+test_dict()
